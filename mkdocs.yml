@@ -1,0 +1,15 @@
+site_name: MyNote
+
+nav:
+  - Home: index.md
+  - MySQL:
+    - ACID: mysql/ACID.md
+  - Redis: 
+    - 'Data types': redis/data_types.md
+    - Persistence: redis/persistence.md
+    - Replication: redis/replication.md
+    - Transaction: redis/transaction.md
+    - Cluster: redis/cluster.md
+    - SubPub: redis/sub_pub.md
+    - Lua script: redis/lua_script.md
+    - Other: redis/other.md
