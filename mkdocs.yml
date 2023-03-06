@@ -3,9 +3,15 @@ site_name: MyNote
 nav:
   - Home: index.md
   - MySQL:
+    - Basic operations: mysql/basic_operations.md
     - ACID: mysql/ACID.md
+    - Index: mysql/index.md
+    - InnoDB multi version: mysql/innodb_multi_version.md
+    - Lock: mysql/lock.md
+    - Logs: mysql/logs.md
+    - Replication: mysql/replication.md
   - Redis: 
-    - 'Data types': redis/data_types.md
+    - Data types: redis/data_types.md
     - Persistence: redis/persistence.md
     - Replication: redis/replication.md
     - Transaction: redis/transaction.md

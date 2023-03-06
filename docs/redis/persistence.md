@@ -5,6 +5,7 @@
 2. AOF(append only file)
    > AOF持久化会记录服务器接收到的每个写操作，当服务器启动的时候会再次的被重放，这样就能重建redis的数据集了。这此命令会以redis protocol格式来记录，当AOF文件变得很大时，redis会在后台对AOF进行重写操作。
 3. No Persistence: 用户可以完全关闭redis的数据持久化的功能。
+   
 4. RDB + AOF
    > 可以在redis中同时开启rdb和aof两种持久化方案。但是需要注意的是，在这种情况下，如果redis重启后，那么会使用AOF来重建数据集，因为AOF中有更加完整的数据。
 

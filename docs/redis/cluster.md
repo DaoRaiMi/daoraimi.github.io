@@ -15,6 +15,7 @@ redis-cluster不支持多个数据库，它默认只有一个库，也就是data
 Redis集群并不使用一致性哈唏来进行数据分片，而是把所有的key都分布在了16384个哈唏槽(hash slots)上，分的方式也比较简单，就是 CRC16(key)%16384
 
 集群中的每个实例都负责维护一段hash slots。比如：
+
 * A节点包含哈唏槽：0 ~ 5500
 * B节点包含哈唏槽：5501 ~ 11000
 * C节点包含哈唏槽：11001 ~ 16384
@@ -30,6 +31,7 @@ redis集群也支持多key操作，前提是这些key都属于同一个节点上
 
 ## 数据一致性
 Redis集群并不保证强一致性，也就是说在某些特殊场景下redis-cluster会有数据丢失的风险。这是因为redis cluster使用主从模式来保证每个分片段的数据高可用，并且复制是异步的。比如：
+
 * 客户端向集群中的B发起了写入请求
 * B给客户端响应了OK
 * B把这个写入操作传递给它的副本实例，B1,B2,和B3
@@ -49,15 +51,15 @@ Redis集群并不保证强一致性，也就是说在某些特殊场景下redis-
 针对这个情况，redis也提供了相应的解决方法，那就是节点超时时间，在超时时间到达后，那么在小数节点内的所有master节点都不会再接受来自客户端的请求了。这样就能够把数据丢失做到最低。
 
 ## 配置参数
-* cluster-enabled: \<yes/no\>
+* cluster-enabled: <yes|no\>
   > 表示当前节点是否开启redis-cluster功能，默认是no
-* cluster-node-timeout: \<milliseconds\>
+* cluster-node-timeout: <milliseconds\>
   > 集群中master节点在被认为是不可用状态时的最大时间。如果超过了该时间，那么该master就会被它的slave节点failover掉。
-* cluster-slave-validity-factor: \<factor\>
+* cluster-slave-validity-factor: <factor\>
   > 如果设置为0，则slave节点总是认为自己是有效的，因此它总是尝试去failover，不管slave和master节点之意的连接不可用的时间。
   >
   > 如果设置成正数，则slave节点会等待连接不可用时间超过factor x node-timeout后，才会发起failover。
-* cluster-require-full-coverage: \<yes|no\>
+* cluster-require-full-coverage: <yes|no\>
 * > 集群中是否所有的key都需要被托管，默认是yes.
 
 ## 更新集群中的节点
