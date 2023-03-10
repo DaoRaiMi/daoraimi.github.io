@@ -2,6 +2,8 @@ site_name: MyNote
 
 nav:
   - Home: index.md
+  - Golang:
+    - GC: golang/gc.md
   - MySQL:
     - Basic operations: mysql/basic_operations.md
     - ACID: mysql/ACID.md
