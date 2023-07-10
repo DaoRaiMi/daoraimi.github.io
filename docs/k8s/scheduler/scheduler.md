@@ -12,12 +12,12 @@ Kube-scheduler会选择最佳的节点来运行新创建的和未被调度的Pod
 调度器为Pod寻找可调度的节点，然后再运行一系列的函数来给这些可调度的节点打分(score)，最后从所有可调度的节点中选择一个分数最高的节点来运行该Pod。接着，调度器会通知API Server这个选择的结果，该过程也就是所谓的“绑定(binding)”
 
 ### kube-scheduler的节点选择
-kube-scheduler为Pod选择一个节点可以会为以下两个操作：
+kube-scheduler为Pod选择一个节点可以分为以下两个操作：
 
 * Filtering
 * Scoring
 
-Filtering步骤寻找了一系列可以调度Pod的结点。例如，`PodFitsResources`会检查节点上是否有足够可用的资源来满足Pod的**requests*的资源量。在该步骤后，节点列表就会包含所有合适的节点，通常合适的节点会有多个。如果节点列表为空，那么该Pod目前是不可调度的。
+Filtering步骤寻找了一系列可以调度Pod的结点。例如，`PodFitsResources`会检查节点上是否有足够可用的资源来满足Pod的**requests**的资源量。在该步骤后，节点列表就会包含所有合适的节点，通常合适的节点会有多个。如果节点列表为空，那么该Pod目前是不可调度的。
 
 在Scoring步骤中，调度器会给过滤出来的节点进行排名来选择最合适的节点。调度器会根据打分规则给每个过滤出来的节点打分。
 

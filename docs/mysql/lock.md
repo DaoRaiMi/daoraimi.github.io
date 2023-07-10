@@ -2,10 +2,12 @@
 
 ## 共享锁(Shared Locks)和排它锁(Exclusive Locks)
 InnoDB实现了标准的**行级锁**：`Shared Locks(S)`和`exclusive locks(X)`.
+
 * Shared Lock允许持有该锁的事务对当前行进行读操作。
 * Exclusive Lock允许持有该锁的事务对当前行进行更新或删除操作
 
 如果事务`T1`持有行`r`的`S`锁，那么另一个事务`T2`对行`r`的加锁流程如下：
+
 * 如果`T2`申请的是`S`锁，则会立即获得锁，此时事务`T1`和`T2`对都持有行`r`上的`S`锁
 * 如果`T2`申请的是`X`锁，则不会立即获得锁。
 
@@ -15,6 +17,7 @@ InnoDB实现了标准的**行级锁**：`Shared Locks(S)`和`exclusive locks(X)`
 InnoDB支持多粒度锁(Multi Granularity Locking)，这就使得表锁和行锁能够共存。例如：`LOCK TABLES ... WRITE`会在指定的表上面添加排它锁`X`，为了能够实现多粒度的锁，InnoDB使用了意向锁(intention locks).
 
 意向锁是表级锁，它表示事务在后续会在表中的行上添加哪种类型(Shared or Exclusive)的锁。意向锁会为以下两种：
+
 * Intention Shared Lock(IS)意向共享锁：表示事务想要在表中的某些行上添加`S`锁。
   > `SELECT ... FOR SHARE`就是一个`IS`锁。
 

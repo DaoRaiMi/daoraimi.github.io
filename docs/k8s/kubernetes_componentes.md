@@ -6,6 +6,7 @@
 
 ### 控制面
 控制面组件负责集群的决策(比如，调度)，监测集群事件，并对事件做出相应的响应。
+
 * kube-apiserver
   > 对外暴露Kubernetes API，该组件是Kubernetes控制面最前面的组件。
 
@@ -42,5 +43,6 @@
 
 ## 插件(Addons)
 插件使用(DaemonSet, Deployment等)来实现一些集群的功能。由于提供的是集群级别的功能，插件相关的资源都属于**kube-system**名称空间中。
+
 * DNS
 * Web UI(Dashboard)

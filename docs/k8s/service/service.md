@@ -69,6 +69,7 @@ spec:
 
 ## Service IP分配
 在Kubernetes中给Service分配IP的方式有两种：
+
 * 动态分配
   > 集群的控制面会自动从可用的service IP段中选择一个可用的IP用于分配。
   
@@ -78,8 +79,8 @@ spec:
 ### 为什么需要手动指定Service IP
 这里举一个最常见的例子：core-dns，默认情况下，所有的Pod的DNS都被设置为coredns的地址，那么这个地址就必须是固定的。常见的做法是选取地址段的第10个做为CoreDNS的service IP.
 
-### 如果选择才能避免Service IP冲突
-使用公式`min(max(16,cidrSize/16), 256`，将ServiceIP段分成了两个部分，也就是说前固定的范围是从[1,16]或者[1,256]，剩下的部分全部都用于动态分配。
+### 如何选择才能避免Service IP冲突
+使用公式`min(max(16,cidrSize/16), 256)`，将ServiceIP段分成了两个部分，也就是说前固定的范围是从[1,16]或者[1,256]，剩下的部分全部都用于动态分配。
 
 需要注意的是：Kubernetes会先使用动态分配范围内的地址，当动态范围内的地址分配完后，也还是会使用静态范围内的IP的。
 

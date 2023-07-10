@@ -3,6 +3,7 @@
 一个Pod中可以有多个容器，但是Pod中也可以有一个或多个**init**容器，这些**init**容器会在应用容器(app-container)运行之前运行。
 
 **init**容器和应用容器本质上是一样的，除了以下两点：
+
 * **init**容器运行完就会结束，不会一直运行；
 * 只有**init**容器成功运行结束后，才会运行下一个(这里的下一个可以是init容器，也可以是应用容器)；
 
@@ -24,6 +25,4 @@ spec:
 ```
 
 ## 使用限制
-**init**容器和普通的应用容器所支持的字段是一样的，但是**init**容器是不支持`lifecycl`,`livenessProbe`,`readinessProbe`,`startupProbe`的，因为在应用Pod运行之前，**init**容器必须运行结束。
-
-当对**init**容器指定的资源限制`spec.initContainers.resources`时，
+**init**容器和普通的应用容器所支持的字段是一样的，但是**init**容器是不支持`lifecycle`,`livenessProbe`,`readinessProbe`,`startupProbe`的，因为在应用Pod运行之前，**init**容器必须运行结束。

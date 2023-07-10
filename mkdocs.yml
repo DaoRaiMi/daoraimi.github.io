@@ -4,6 +4,18 @@ nav:
   - Home: index.md
   - Golang:
     - GC: golang/gc.md
+  - Kubernetes:
+    - Componentes: k8s/kubernetes_componentes.md
+    - Kube proxy: k8s/kube_proxy.md
+    - Service: k8s/service/service.md
+    - Scheduler:
+      - Scheduler: k8s/scheduler/scheduler.md
+      - Affinity: k8s/scheduler/affinity.md
+      - Taints And Tolerations: k8s/scheduler/taints_and_tolerations.md
+    - Pod:
+      - Init Containers: k8s/pod/init_containers.md
+      - Pod Lifetime: k8s/pod/pod.md
+      - Pod Termination: k8s/pod/pod_termination.md
   - MySQL:
     - Basic operations: mysql/basic_operations.md
     - ACID: mysql/ACID.md

@@ -48,6 +48,7 @@ Pod，此时就不会出现**Terminating**了。
 
 ### 容器生命周期
 容器的生命周期目前只支持两种：**postStart**, **preStop**
+
 * postStart
   > 别被它的名称迷惑了，**postStart**在容器被创建后会立即执行，所以无法保证它在容器的**entrypoint**之前或之后运行。
 ```yaml
@@ -74,6 +75,7 @@ spec:
 ### 容器探针
 容器探针是由kubelet在某个容器上周期性的执行的
 #### 探针类型
+
 * livenessProbe
   > 存活探针，表示容器是否还在运行。如果探测失败，kubelet会根据restartPolicy会重启容器。如果容器没有提供**livenessProbe**探针，则默认的探测结果是Success
 
@@ -86,6 +88,7 @@ spec:
 
 #### 探测机制
 探测机制有以下几种：
+
 * exec
   > 在容器内部使用exec执行命令，工作目录是容器的根目录(/)，指定的命令并不会在一个shell中运行，所以像shell中的一些特性是不生效的(比如：管道|)。如果想使用shell则需要手动指定要运行的shell。命令的返回值为**0**会被认为成功。
 
